@@ -1,0 +1,17 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Bienvenidos{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>¡Bienvenidos a la Fiesta!</h2>
+    <p style="text-align: center; color: #c0c0c0; margin-bottom: 30px;">
+        Uno de ustedes es el impostor... ¿Podrán descubrirlo antes de la medianoche?
+    </p>
+
+    <div class="nav-links" style="flex-direction: column;">
+        <a href="{% url 'start_game' %}" class="btn">Crear Partida</a>
+        <a href="{% url 'join_game' %}" class="btn btn-secondary">Unirse a Partida</a>
+    </div>
+</div>
+{% endblock %}

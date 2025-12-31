@@ -1,0 +1,24 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Partida Creada{% endblock %}
+
+{% block content %}
+<div class="card" style="text-align: center;">
+    <h2>¡Partida Creada!</h2>
+
+    <p style="color: #c0c0c0; margin-bottom: 20px;">Comparte este código con todos los jugadores:</p>
+
+    <div style="font-size: 4rem; font-weight: bold; letter-spacing: 10px; color: #ffd700; margin: 30px 0; text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);">
+        {{ short_id }}
+    </div>
+
+    <p style="color: #888; font-size: 0.9rem; margin-bottom: 30px;">
+        Cada jugador debe ir a "Unirse a Partida" e ingresar este código
+    </p>
+
+    <div class="nav-links" style="flex-direction: column;">
+        <a href="{% url 'join_game' %}" class="btn">Unirse a Esta Partida</a>
+        <a href="{% url 'start_game' %}" class="btn btn-secondary">Crear Otra Partida</a>
+    </div>
+</div>
+{% endblock %}

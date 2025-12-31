@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}El Impostor{% endblock %} - Año Nuevo 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, #ffd700, transparent),
+                radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffd700, transparent),
+                radial-gradient(2px 2px at 160px 120px, #fff, transparent),
+                radial-gradient(1px 1px at 230px 80px, #ffd700, transparent),
+                radial-gradient(2px 2px at 300px 150px, #fff, transparent),
+                radial-gradient(1px 1px at 370px 60px, #ffd700, transparent),
+                radial-gradient(2px 2px at 450px 200px, #fff, transparent);
+            background-size: 500px 250px;
+            animation: twinkle 5s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .year {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ffed4a, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); }
+            to { filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #c0c0c0;
+            margin-top: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #ffd700;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #c0c0c0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #0a0a0a;
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .error {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(255, 0, 0, 0.5);
+            color: #ff6b6b;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .nav-links a {
+            flex: 1;
+        }
+
+        .firework {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: firework 1.5s ease-out infinite;
+        }
+
+        @keyframes firework {
+            0% { transform: translateY(100vh) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="year">2026</div>
+            <div class="subtitle">El Impostor</div>
+        </div>
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <script>
+        // Create random fireworks
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = Math.random() * 100 + 'vw';
+            firework.style.background = ['#ffd700', '#ff6b6b', '#4ecdc4', '#fff'][Math.floor(Math.random() * 4)];
+            firework.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(firework);
+
+            setTimeout(() => firework.remove(), 3000);
+        }
+
+        setInterval(createFirework, 500);
+    </script>
+</body>
+</html>

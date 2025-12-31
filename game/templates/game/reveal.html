@@ -1,0 +1,41 @@
+{% extends 'game/base.html' %}
+
+{% block title %}Tu Rol{% endblock %}
+
+{% block content %}
+<div class="card" style="text-align: center;">
+    <p style="color: #c0c0c0; margin-bottom: 10px;">{{ player_name }}</p>
+
+    {% if is_impostor %}
+    <div style="margin: 40px 0;">
+        <div style="font-size: 3rem; font-weight: bold; color: #ff4444; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 0 30px rgba(255, 68, 68, 0.5); animation: pulse 1.5s ease-in-out infinite;">
+            IMPOSTOR
+        </div>
+        <p style="color: #ff6b6b; margin-top: 20px; font-size: 1.1rem;">
+            Mézclate con los demás. ¡Que no te descubran!
+        </p>
+    </div>
+    {% else %}
+    <div style="margin: 40px 0;">
+        <p style="color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">Tu Concepto</p>
+        <div style="font-size: 2rem; font-weight: bold; color: #4ecdc4; text-shadow: 0 0 20px rgba(78, 205, 196, 0.5); padding: 20px; background: rgba(78, 205, 196, 0.1); border-radius: 10px; border: 1px solid rgba(78, 205, 196, 0.3);">
+            {{ concept }}
+        </div>
+        <p style="color: #888; margin-top: 20px; font-size: 1rem;">
+            ¡Encuentra al impostor que no conoce esto!
+        </p>
+    </div>
+    {% endif %}
+
+    <div class="nav-links">
+        <a href="{% url 'home' %}" class="btn btn-secondary">Inicio</a>
+    </div>
+</div>
+
+<style>
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+    }
+</style>
+{% endblock %}
